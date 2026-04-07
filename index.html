@@ -1,1 +1,762 @@
-<!-- placeholder -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ÐÐÐÐÐ â ÐÐ°Ð³Ð°Ð·Ð¸Ð½ ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ð³Ð¾ Ð¿Ð¸Ð²Ð° | Ð¨ÑÐ¼ÐºÐµÐ½Ñ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #FFD700;
+      --yellow2: #F5C200;
+      --yellow-dark: #C49A00;
+      --black: #0d0d0d;
+      --black2: #181818;
+      --black3: #222222;
+      --black4: #2a2a2a;
+      --text: #f5f0e0;
+      --text-muted: #a09070;
+      --amber: #e8a020;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* âââ HEADER âââ */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(13,13,13,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--yellow2);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-circle {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      border: 3px solid var(--yellow);
+      background: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      color: var(--yellow);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    nav { display: flex; gap: 28px; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--yellow); }
+
+    .btn-order {
+      background: var(--yellow);
+      color: var(--black);
+      border: none; cursor: pointer;
+      padding: 11px 24px;
+      border-radius: 6px;
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background .2s, transform .15s;
+    }
+    .btn-order:hover { background: #ffe840; transform: translateY(-1px); }
+
+    /* âââ HERO âââ */
+    .hero {
+      min-height: 94vh;
+      position: relative;
+      display: flex; align-items: center;
+      padding: 0 8%;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(120deg, rgba(13,13,13,0.92) 40%, rgba(13,13,13,0.5) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 660px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,0.12);
+      border: 1px solid var(--yellow2);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 30px;
+      margin-bottom: 26px;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero h1 .hl { color: var(--yellow); }
+    .hero p {
+      color: #bbb09a;
+      font-size: 1.02rem;
+      margin-bottom: 38px;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+      border: none; cursor: pointer;
+      padding: 15px 34px;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: #ffe840; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,215,0,0.4); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid rgba(255,255,255,0.25);
+      padding: 13px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .hero-stats {
+      margin-top: 54px;
+      display: flex; gap: 44px;
+    }
+    .stat strong { display: block; font-family: 'Oswald', sans-serif; font-size: 2rem; color: var(--yellow); }
+    .stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+
+    /* âââ DIVIDER âââ */
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.25), transparent); margin: 0 6%; }
+
+    /* âââ SECTIONS âââ */
+    section { padding: 80px 8%; }
+    .s-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .s-title { font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 3vw, 2.6rem); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px; }
+    .s-sub { color: var(--text-muted); font-size: 0.92rem; max-width: 500px; }
+
+    /* âââ WHY US âââ */
+    .why-grid {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+    .why-card {
+      background: var(--black2);
+      border: 1px solid rgba(255,215,0,0.1);
+      border-radius: 14px;
+      padding: 28px 22px;
+      transition: border-color .25s, transform .25s;
+    }
+    .why-card:hover { border-color: var(--yellow2); transform: translateY(-4px); }
+    .why-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .why-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 7px; }
+    .why-card p { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* âââ MENU SECTION âââ */
+    .menu-bg { background: var(--black2); }
+
+    .tabs {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 36px; margin-bottom: 36px;
+    }
+    .tab {
+      background: var(--black3);
+      border: 1px solid rgba(255,215,0,0.15);
+      color: var(--text-muted);
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      transition: all .2s;
+    }
+    .tab.active, .tab:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .menu-card {
+      background: var(--black3);
+      border: 1px solid rgba(255,215,0,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.5); border-color: rgba(255,215,0,0.3); }
+    .menu-img { width: 100%; height: 185px; object-fit: cover; }
+    .menu-body { padding: 16px 18px; }
+    .menu-tag {
+      display: inline-block;
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--yellow); background: rgba(255,215,0,0.1);
+      border-radius: 4px; padding: 3px 9px; margin-bottom: 9px;
+    }
+    .menu-name { font-weight: 800; font-size: 0.98rem; margin-bottom: 5px; }
+    .menu-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
+    .menu-foot { display: flex; align-items: center; justify-content: space-between; }
+    .menu-price { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: var(--yellow); }
+    .btn-add {
+      background: var(--yellow); color: var(--black);
+      border: none; cursor: pointer;
+      padding: 8px 16px; border-radius: 6px;
+      font-weight: 900; font-size: 0.75rem;
+      transition: background .2s;
+    }
+    .btn-add:hover { background: #ffe840; }
+
+    /* âââ ORDER âââ */
+    .order-wrap {
+      margin-top: 50px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start;
+    }
+    .order-info h3 { font-family: 'Oswald', sans-serif; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 14px; }
+    .order-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 28px; }
+
+    .steps { list-style: none; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .step-n {
+      min-width: 34px; height: 34px;
+      background: var(--yellow); color: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.85rem;
+    }
+    .step-t strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+    .step-t span { font-size: 0.78rem; color: var(--text-muted); }
+
+    .order-form {
+      background: var(--black3);
+      border: 1px solid rgba(255,215,0,0.15);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .order-form h3 { font-size: 1rem; font-weight: 800; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .fg { margin-bottom: 16px; }
+    .fg label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 7px; }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; background: var(--black2);
+      border: 1px solid rgba(255,215,0,0.18);
+      border-radius: 8px; padding: 12px 14px;
+      color: var(--text); font-family: inherit; font-size: 0.88rem;
+      outline: none; transition: border-color .2s;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--yellow); }
+    .fg textarea { resize: vertical; min-height: 88px; }
+    .fg select option { background: var(--black2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .submit-btn {
+      width: 100%; margin-top: 8px;
+      background: var(--yellow); color: var(--black);
+      border: none; cursor: pointer;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 900; font-size: 0.95rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .submit-btn:hover { background: #ffe840; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,215,0,0.35); }
+
+    /* âââ CONTACT âââ */
+    .contact-section { text-align: center; }
+    .contact-grid {
+      margin-top: 44px;
+      display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+    }
+    .cc {
+      background: var(--black2);
+      border: 1px solid rgba(255,215,0,0.12);
+      border-radius: 14px;
+      padding: 28px 30px;
+      min-width: 170px;
+      transition: border-color .2s, transform .2s;
+    }
+    .cc:hover { border-color: var(--yellow); transform: translateY(-3px); }
+    .cc-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .cc h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 9px; }
+    .cc a { color: var(--yellow); font-weight: 700; font-size: 0.95rem; text-decoration: none; line-height: 1.4; }
+    .cc a:hover { text-decoration: underline; }
+
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: white;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 50px;
+      font-weight: 900; font-size: 1rem;
+      margin-top: 38px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+
+    /* âââ MAP STRIP âââ */
+    .map-strip {
+      background: var(--black2);
+      border-top: 1px solid rgba(255,215,0,0.15);
+      border-bottom: 1px solid rgba(255,215,0,0.15);
+      padding: 28px 8%;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    }
+    .map-strip span { font-size: 1.6rem; }
+    .map-strip div strong { display: block; font-size: 0.9rem; color: var(--yellow); }
+    .map-strip div small { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* âââ FOOTER âââ */
+    footer {
+      background: #080808;
+      border-top: 2px solid var(--yellow2);
+      padding: 26px 8%;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    footer a { color: var(--yellow); text-decoration: none; }
+
+    /* âââ TOAST âââ */
+    .toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--yellow); color: var(--black);
+      padding: 14px 22px; border-radius: 10px;
+      font-weight: 800; font-size: 0.9rem;
+      transform: translateY(80px); opacity: 0;
+      transition: all .35s; z-index: 999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* âââ SCROLL REVEAL âââ */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* âââ MOBILE âââ */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .order-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ââââ HEADER ââââ -->
+<header>
+  <a class="logo" href="#">
+    <div class="logo-circle">ðº</div>
+    <div>
+      <div class="logo-name">ÐÐÐÐÐ</div>
+      <div class="logo-sub">ÐÐ°Ð³Ð°Ð·Ð¸Ð½ ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ð³Ð¾ Ð¿Ð¸Ð²Ð° Â· Ð¨ÑÐ¼ÐºÐµÐ½Ñ</div>
+    </div>
+  </a>
+  <nav>
+    <a href="#menu">ÐÐµÐ½Ñ</a>
+    <a href="#order">ÐÐ¾ÑÑÐ°Ð²ÐºÐ°</a>
+    <a href="#contact">ÐÐ¾Ð½ÑÐ°ÐºÑÑ</a>
+  </nav>
+  <button class="btn-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ð ÐÐ°ÐºÐ°Ð·Ð°ÑÑ</button>
+</header>
+
+<!-- ââââ HERO ââââ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">ðº Ð Ð°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¸Ð²Ð¾ Â· Ð¨ÑÐ¼ÐºÐµÐ½Ñ</div>
+    <h1>ÐÐ°Ð³Ð°Ð·Ð¸Ð½<br><span class="hl">Â«ÐÐÐÐÐÂ»</span><br>ÐÐ¸Ð²Ð¾Ðµ Ð¿Ð¸Ð²Ð¾</h1>
+    <p>Ð¡Ð²ÐµÐ¶ÐµÐµ ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¸Ð²Ð¾, ÑÐ½ÐµÐºÐ¸ Ð¸ Ð·Ð°ÐºÑÑÐºÐ¸ â Ñ Ð´Ð¾ÑÑÐ°Ð²ÐºÐ¾Ð¹ Ð´Ð¾ Ð²Ð°ÑÐµÐ¹ Ð´Ð²ÐµÑÐ¸ Ð¸Ð»Ð¸ ÑÐ°Ð¼Ð¾Ð²ÑÐ²Ð¾Ð·Ð¾Ð¼. ÐÑÐµÐ³Ð´Ð° ÑÐ²ÐµÐ¶ÐµÐµ, Ð²ÑÐµÐ³Ð´Ð° Ð²ÐºÑÑÐ½Ð¾.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Ð¡Ð¼Ð¾ÑÑÐµÑÑ Ð¼ÐµÐ½Ñ</button>
+      <button class="btn-ghost" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ÐÐ°ÐºÐ°Ð·Ð°ÑÑ Ð´Ð¾ÑÑÐ°Ð²ÐºÑ</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>20+</strong><span>Ð¡Ð¾ÑÑÐ¾Ð² Ð¿Ð¸Ð²Ð°</span></div>
+      <div class="stat"><strong>60 Ð¼Ð¸Ð½</strong><span>ÐÐ¾ÑÑÐ°Ð²ÐºÐ°</span></div>
+      <div class="stat"><strong>ÐÐ¶ÐµÐ´Ð½.</strong><span>10:00â23:00</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ââââ WHY ââââ -->
+<section>
+  <div class="s-label">ÐÐ°ÑÐ¸ Ð¿ÑÐµÐ¸Ð¼ÑÑÐµÑÑÐ²Ð°</div>
+  <div class="s-title">ÐÐ¾ÑÐµÐ¼Ñ Ð²ÑÐ±Ð¸ÑÐ°ÑÑ Ð½Ð°Ñ</div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">ðº</div>
+      <h3>ÐÐ¸Ð²Ð¾Ðµ ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ</h3>
+      <p>ÐÐ¸Ð²Ð¾ Ð¿Ð¾ÑÑÑÐ¿Ð°ÐµÑ Ð½Ð°Ð¿ÑÑÐ¼ÑÑ Ð¾Ñ Ð¿ÑÐ¾Ð²ÐµÑÐµÐ½Ð½ÑÑ Ð¿Ð¸Ð²Ð¾Ð²Ð°ÑÐµÐ½. ÐÐ¸ÐºÐ°ÐºÐ¾Ð³Ð¾ Ð¿Ð°ÑÑÐµÑÐ¸Ð·Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ â ÑÐ¾Ð»ÑÐºÐ¾ Ð¶Ð¸Ð²Ð¾Ðµ!</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">ð</div>
+      <h3>ÐÑÑÑÑÐ°Ñ Ð´Ð¾ÑÑÐ°Ð²ÐºÐ°</h3>
+      <p>ÐÑÐ¸Ð²ÐµÐ·ÑÐ¼ Ð·Ð°ÐºÐ°Ð· Ð·Ð° 60 Ð¼Ð¸Ð½ÑÑ Ð¿Ð¾ Ð¨ÑÐ¼ÐºÐµÐ½ÑÑ. Ð£Ð´Ð¾Ð±Ð½Ð°Ñ ÑÐ°ÑÐ° â ÑÑÐµÐºÐ»ÑÐ½Ð½Ð°Ñ Ð¸Ð»Ð¸ Ð¿Ð»Ð°ÑÑÐ¸ÐºÐ¾Ð²Ð°Ñ.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">ð¦</div>
+      <h3>ÐÑÐ±Ð¾Ð¹ Ð¾Ð±ÑÑÐ¼</h3>
+      <p>ÐÑ 0.5 Ð»Ð¸ÑÑÐ° Ð´Ð¾ 30-Ð»Ð¸ÑÑÐ¾Ð²Ð¾Ð³Ð¾ ÐºÐµÐ³Ð°. ÐÐ»Ñ ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ð¸, Ð²ÐµÑÐµÑÐ¸Ð½ÐºÐ¸ Ð¸Ð»Ð¸ Ð¿ÑÐ¾ÑÑÐ¾ Ð²ÐµÑÐµÑÐ°.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">ð¬</div>
+      <h3>ÐÐ°ÐºÐ°Ð· Ð² 1 ÐºÐ»Ð¸Ðº</h3>
+      <p>Ð§ÐµÑÐµÐ· ÑÐ¾ÑÐ¼Ñ Ð½Ð° ÑÐ°Ð¹ÑÐµ, Instagram Ð¸Ð»Ð¸ WhatsApp. ÐÑÐ²ÐµÑÐ¸Ð¼ Ð¸ Ð¿Ð¾Ð´ÑÐ²ÐµÑÐ´Ð¸Ð¼ Ð·Ð° 10 Ð¼Ð¸Ð½ÑÑ.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ââââ MENU ââââ -->
+<section class="menu-bg" id="menu">
+  <div class="s-label">ÐÑÑÐ¾ÑÑÐ¸Ð¼ÐµÐ½Ñ</div>
+  <div class="s-title">ÐÐ°ÑÐµ Ð¼ÐµÐ½Ñ</div>
+  <div class="s-sub">Ð Ð°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¸Ð²Ð¾, ÑÐ½ÐµÐºÐ¸, Ð·Ð°ÐºÑÑÐºÐ¸ Ð¸ Ð²ÑÑ Ð´Ð»Ñ Ð¾ÑÐ»Ð¸ÑÐ½Ð¾Ð³Ð¾ Ð²ÐµÑÐµÑÐ°.</div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="filterMenu('all', this)">ÐÑÑ</div>
+    <div class="tab" onclick="filterMenu('light', this)">ð¾ Ð¡Ð²ÐµÑÐ»Ð¾Ðµ</div>
+    <div class="tab" onclick="filterMenu('dark', this)">ð¤ Ð¢ÑÐ¼Ð½Ð¾Ðµ</div>
+    <div class="tab" onclick="filterMenu('wheat', this)">ð¿ ÐÑÐµÐ½Ð¸ÑÐ½Ð¾Ðµ</div>
+    <div class="tab" onclick="filterMenu('snack', this)">ð ÐÐ°ÐºÑÑÐºÐ¸</div>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+
+    <div class="menu-card reveal" data-cat="light">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=500&q=75" alt="Ð¡Ð²ÐµÑÐ»Ð¾Ðµ" />
+      <div class="menu-body">
+        <span class="menu-tag">Ð¡Ð²ÐµÑÐ»Ð¾Ðµ</span>
+        <div class="menu-name">Â«ÐÐ¸Ð³ÑÐ»ÑÐ²ÑÐºÐ¾ÐµÂ» ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ</div>
+        <div class="menu-desc">ÐÐ»Ð°ÑÑÐ¸ÑÐµÑÐºÐ¾Ðµ ÑÐ²ÐµÑÐ»Ð¾Ðµ Â· 4.5% Â· ÐÑÐ³ÐºÐ¾Ðµ Ð¸ Ð¾ÑÐ²ÐµÐ¶Ð°ÑÑÐµÐµ</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 600 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('ÐÐ¸Ð³ÑÐ»ÑÐ²ÑÐºÐ¾Ðµ ÑÐ°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="light">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=500&q=75" alt="Ð¡Ð²ÐµÑÐ»Ð¾Ðµ ÐºÑÐ°ÑÑ" />
+      <div class="menu-body">
+        <span class="menu-tag">Ð¡Ð²ÐµÑÐ»Ð¾Ðµ Â· ÐÑÐ°ÑÑ</span>
+        <div class="menu-name">Â«ÐÐ¾Ð»Ð¾ÑÐ°ÑÂ» Premium</div>
+        <div class="menu-desc">ÐÑÐ°ÑÑÐ¾Ð²Ð¾Ðµ ÑÐ²ÐµÑÐ»Ð¾Ðµ Â· 5.2% Â· ÐÐ°ÑÑÑÐµÐ½Ð½ÑÐ¹ ÑÐ¼ÐµÐ»ÐµÐ²Ð¾Ð¹ Ð°ÑÐ¾Ð¼Ð°Ñ</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 900 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('ÐÐ¾Ð»Ð¾ÑÐ°Ñ Premium')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="dark">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=500&q=75" alt="Ð¢ÑÐ¼Ð½Ð¾Ðµ" />
+      <div class="menu-body">
+        <span class="menu-tag">Ð¢ÑÐ¼Ð½Ð¾Ðµ</span>
+        <div class="menu-name">Â«ÐÐ¾ÑÑÐµÑÂ» ÑÑÐ¼Ð½Ð¾Ðµ</div>
+        <div class="menu-desc">Ð¢ÑÐ¼Ð½Ð¾Ðµ Â· 6.5% Â· ÐÐ°ÑÐ°Ð¼ÐµÐ»ÑÐ½ÑÐµ Ð½Ð¾ÑÐºÐ¸, Ð±Ð°ÑÑÐ°ÑÐ¸ÑÑÑÐ¹ Ð²ÐºÑÑ</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 850 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('ÐÐ¾ÑÑÐµÑ ÑÑÐ¼Ð½Ð¾Ðµ')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="wheat">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1474625342403-d079aa9c2925?w=500&q=75" alt="ÐÑÐµÐ½Ð¸ÑÐ½Ð¾Ðµ" />
+      <div class="menu-body">
+        <span class="menu-tag">ÐÑÐµÐ½Ð¸ÑÐ½Ð¾Ðµ</span>
+        <div class="menu-name">Â«ÐÑÐµÐ½Ð¸ÑÐ½Ð¾ÐµÂ» Ð½ÐµÑÐ¸Ð»ÑÑÑ.</div>
+        <div class="menu-desc">ÐÐµÑÐ¸Ð»ÑÑÑÐ¾Ð²Ð°Ð½Ð½Ð¾Ðµ Â· 5.0% Â· ÐÑÐ³ÐºÐ¾Ðµ, Ñ Ð½Ð¾ÑÐºÐ°Ð¼Ð¸ ÑÐ¸ÑÑÑÑÐ°</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 800 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('ÐÑÐµÐ½Ð¸ÑÐ½Ð¾Ðµ Ð½ÐµÑÐ¸Ð»ÑÑÑÐ¾Ð²Ð°Ð½Ð½Ð¾Ðµ')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="dark">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&q=75" alt="Ð¡ÑÐ°ÑÑ" />
+      <div class="menu-body">
+        <span class="menu-tag">Ð¢ÑÐ¼Ð½Ð¾Ðµ Â· Ð¡ÑÐ°ÑÑ</span>
+        <div class="menu-name">Â«ÐÑÐ»Ð°Ð½Ð´ÑÐºÐ¸Ð¹Â» ÑÑÐ°ÑÑ</div>
+        <div class="menu-desc">Ð¡ÑÐ°ÑÑ Â· 7.0% Â· ÐÐ¾ÑÐµÐ¹Ð½ÑÐ¹ Ð²ÐºÑÑ, ÐºÑÐµÐ¼Ð¾Ð²Ð°Ñ Ð¿ÐµÐ½Ð°</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 950 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('ÐÑÐ»Ð°Ð½Ð´ÑÐºÐ¸Ð¹ ÑÑÐ°ÑÑ')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="light">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" alt="IPA" />
+      <div class="menu-body">
+        <span class="menu-tag">Ð¡Ð²ÐµÑÐ»Ð¾Ðµ Â· IPA</span>
+        <div class="menu-name">Â«Ð¥Ð¾Ð¿ Ð¡ÑÐ°Ð¹Ð»Â» IPA</div>
+        <div class="menu-desc">India Pale Ale Â· 6.2% Â· Ð¯ÑÐºÐ¸Ð¹ Ð³Ð¾ÑÑÐºÐ¾Ð²Ð°ÑÑÐ¹ ÑÐ¼ÐµÐ»Ñ</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 1 000 â¸/Ð»</div>
+          <button class="btn-add" onclick="addItem('Ð¥Ð¾Ð¿ Ð¡ÑÐ°Ð¹Ð» IPA')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="snack">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=500&q=75" alt="ÐÑÐ»ÐµÐ½Ð°Ñ ÑÑÐ±Ð°" />
+      <div class="menu-body">
+        <span class="menu-tag">ÐÐ°ÐºÑÑÐºÐ°</span>
+        <div class="menu-name">ÐÑÐ»ÐµÐ½Ð°Ñ ÑÑÐ±Ð°</div>
+        <div class="menu-desc">Ð§ÐµÑÐ¾Ð½Ñ, Ð»ÐµÑ, ÑÐ°ÑÐ°Ð½ÐºÐ° Â· ÐÐ´ÐµÐ°Ð»ÑÐ½Ð¾ Ðº Ð¿Ð¸Ð²Ñ</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 800 â¸/ÑÑ</div>
+          <button class="btn-add" onclick="addItem('ÐÑÐ»ÐµÐ½Ð°Ñ ÑÑÐ±Ð°')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="snack">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=500&q=75" alt="Ð§Ð¸Ð¿ÑÑ" />
+      <div class="menu-body">
+        <span class="menu-tag">ÐÐ°ÐºÑÑÐºÐ°</span>
+        <div class="menu-name">Ð¡Ð½ÐµÐºÐ¸ & ÑÐ¸Ð¿ÑÑ</div>
+        <div class="menu-desc">Ð¨Ð¸ÑÐ¾ÐºÐ¸Ð¹ Ð²ÑÐ±Ð¾Ñ ÑÐ½ÐµÐºÐ¾Ð² â Ðº Ð»ÑÐ±Ð¾Ð¼Ñ ÑÐ¾ÑÑÑ Ð¿Ð¸Ð²Ð°</div>
+        <div class="menu-foot">
+          <div class="menu-price">Ð¾Ñ 350 â¸</div>
+          <button class="btn-add" onclick="addItem('Ð¡Ð½ÐµÐºÐ¸ Ð¸ ÑÐ¸Ð¿ÑÑ')">+ Ð Ð·Ð°ÐºÐ°Ð·</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ââââ ORDER ââââ -->
+<section id="order">
+  <div class="s-label">ÐÐ¾ÑÑÐ°Ð²ÐºÐ° Ð¿Ð¾ Ð¨ÑÐ¼ÐºÐµÐ½ÑÑ</div>
+  <div class="s-title">ÐÑÐ¾ÑÐ¼Ð¸ÑÑ Ð·Ð°ÐºÐ°Ð·</div>
+  <div class="order-wrap">
+
+    <div class="reveal">
+      <h3 style="font-family:'Oswald',sans-serif;font-size:1.5rem;text-transform:uppercase;margin-bottom:14px;">ÐÐ°Ðº ÑÐ°Ð±Ð¾ÑÐ°ÐµÑ Ð´Ð¾ÑÑÐ°Ð²ÐºÐ°?</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:28px;">ÐÑÑÐ°Ð²ÑÑÐµ Ð·Ð°ÑÐ²ÐºÑ â Ð¼Ñ Ð¿ÐµÑÐµÐ·Ð²Ð¾Ð½Ð¸Ð¼ Ð·Ð° 10 Ð¼Ð¸Ð½ÑÑ, ÑÑÐ¾ÑÐ½Ð¸Ð¼ Ð·Ð°ÐºÐ°Ð· Ð¸ Ð¿ÑÐ¸Ð²ÐµÐ·ÑÐ¼ Ð² ÑÐ´Ð¾Ð±Ð½Ð¾Ðµ Ð²ÑÐµÐ¼Ñ.</p>
+      <ul class="steps">
+        <li><div class="step-n">1</div><div class="step-t"><strong>ÐÑÐ±Ð¸ÑÐ°ÐµÑÐµ ÑÐ¾ÑÑÐ°</strong><span>Ð Ð¼ÐµÐ½Ñ Ð²ÑÑÐµ Ð¸Ð»Ð¸ Ð½Ð°Ð¿Ð¸ÑÐ¸ÑÐµ Ð½Ð°Ð¼ ÑÐ¿Ð¸ÑÐ¾Ðº</span></div></li>
+        <li><div class="step-n">2</div><div class="step-t"><strong>ÐÐ°Ð¿Ð¾Ð»Ð½ÑÐµÑÐµ ÑÐ¾ÑÐ¼Ñ</strong><span>ÐÐ»Ð¸ Ð¿Ð¸ÑÐµÑÐµ Ð² Instagram / WhatsApp</span></div></li>
+        <li><div class="step-n">3</div><div class="step-t"><strong>ÐÑ Ð¿Ð¾Ð´ÑÐ²ÐµÑÐ¶Ð´Ð°ÐµÐ¼</strong><span>ÐÐ²Ð¾Ð½Ð¾Ðº Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±ÑÐµÐ½Ð¸Ðµ â Ð² ÑÐµÑÐµÐ½Ð¸Ðµ 10 Ð¼Ð¸Ð½ÑÑ</span></div></li>
+        <li><div class="step-n">4</div><div class="step-t"><strong>ÐÐ¾Ð»ÑÑÐ°ÐµÑÐµ Ð·Ð°ÐºÐ°Ð·!</strong><span>ÐÐ¾ÑÑÐ°Ð²Ð¸Ð¼ Ð·Ð° 60 Ð¼Ð¸Ð½ÑÑ Ð¿Ð¾ Ð¨ÑÐ¼ÐºÐµÐ½ÑÑ</span></div></li>
+      </ul>
+
+      <div style="margin-top:24px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--yellow);margin-bottom:8px;">ÐÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑÐ½ÑÐ¹ Ð·Ð°ÐºÐ°Ð·</div>
+        <div style="font-size:.9rem;color:var(--text-muted);">2 Ð»Ð¸ÑÑÐ° Ð¿Ð¸Ð²Ð° Â· Ð´Ð¾ÑÑÐ°Ð²ÐºÐ° Ð¿Ð¾ Ð³Ð¾ÑÐ¾Ð´Ñ Â· Ð¾Ð¿Ð»Ð°ÑÐ° Ð¿ÑÐ¸ Ð¿Ð¾Ð»ÑÑÐµÐ½Ð¸Ð¸</div>
+      </div>
+    </div>
+
+    <div class="order-form reveal" id="orderForm">
+      <h3>ð ÐÐ°ÑÐ²ÐºÐ° Ð½Ð° Ð´Ð¾ÑÑÐ°Ð²ÐºÑ</h3>
+      <div class="form-row">
+        <div class="fg"><label>ÐÐ°ÑÐµ Ð¸Ð¼Ñ</label><input type="text" id="fn" placeholder="ÐÑÐ»Ð°Ð½" /></div>
+        <div class="fg"><label>ÐÐ¾Ð¼ÐµÑ ÑÐµÐ»ÐµÑÐ¾Ð½Ð°</label><input type="tel" id="fp" placeholder="+7 777 000-00-00" /></div>
+      </div>
+      <div class="fg"><label>ÐÐ´ÑÐµÑ Ð´Ð¾ÑÑÐ°Ð²ÐºÐ¸</label><input type="text" id="fa" placeholder="Ð£Ð»Ð¸ÑÐ°, Ð´Ð¾Ð¼, ÐºÐ²Ð°ÑÑÐ¸ÑÐ° â Ð¨ÑÐ¼ÐºÐµÐ½Ñ" /></div>
+      <div class="fg">
+        <label>ÐÐ°Ñ Ð·Ð°ÐºÐ°Ð·</label>
+        <textarea id="fi" placeholder="ÐÐ°Ð¿Ð¸ÑÐ¸ÑÐµ: ÐºÐ°ÐºÐ¸Ðµ ÑÐ¾ÑÑÐ°, ÑÐºÐ¾Ð»ÑÐºÐ¾ Ð»Ð¸ÑÑÐ¾Ð², Ð½ÑÐ¶Ð½Ð° ÑÐ°ÑÐ° Ð¸Ð»Ð¸ Ð½ÐµÑ..."></textarea>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>ÐÐ¿Ð»Ð°ÑÐ°</label>
+          <select id="fpa">
+            <option>ÐÐ°Ð»Ð¸ÑÐ½ÑÐ¼Ð¸</option>
+            <option>Kaspi QR</option>
+            <option>ÐÐµÑÐµÐ²Ð¾Ð´ Ð½Ð° ÐºÐ°ÑÑÑ</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>ÐÐ¾Ð³Ð´Ð° Ð´Ð¾ÑÑÐ°Ð²Ð¸ÑÑ?</label>
+          <select id="ft">
+            <option>ÐÐ°Ðº Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐºÐ¾ÑÐµÐµ</option>
+            <option>Ð§ÐµÑÐµÐ· 1 ÑÐ°Ñ</option>
+            <option>Ð§ÐµÑÐµÐ· 2 ÑÐ°ÑÐ°</option>
+            <option>ÐÐµÑÐµÑÐ¾Ð¼</option>
+          </select>
+        </div>
+      </div>
+      <button class="submit-btn" onclick="submitOrder()">ðº ÐÑÐ¿ÑÐ°Ð²Ð¸ÑÑ Ð·Ð°ÑÐ²ÐºÑ</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ââââ MAP STRIP ââââ -->
+<div class="map-strip">
+  <span>ð</span>
+  <div>
+    <strong>Ð¨ÑÐ¼ÐºÐµÐ½Ñ â Ð¼Ð°Ð³Ð°Ð·Ð¸Ð¼ Â«ÐÐÐÐÐÂ»</strong>
+    <small>Ð£ÑÐ¾ÑÐ½Ð¸ÑÐµ ÑÐ¾ÑÐ½ÑÐ¹ Ð°Ð´ÑÐµÑ Ð¿Ð¾ ÑÐµÐ»ÐµÑÐ¾Ð½Ñ Ð¸Ð»Ð¸ Ð² Instagram</small>
+  </div>
+  <span style="margin-left:auto;">ð</span>
+  <div>
+    <strong style="color:var(--yellow);">ÐÐ¶ÐµÐ´Ð½ÐµÐ²Ð½Ð¾ 10:00 â 23:00</strong>
+    <small>ÐÐ¾ÑÑÐ°Ð²ÐºÐ° Ð¸ ÑÐ°Ð¼Ð¾Ð²ÑÐ²Ð¾Ð·</small>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ââââ CONTACT ââââ -->
+<section class="contact-section" id="contact">
+  <div class="s-label">Ð¡Ð²ÑÐ·Ñ Ñ Ð½Ð°Ð¼Ð¸</div>
+  <div class="s-title">ÐÐ¾Ð½ÑÐ°ÐºÑÑ</div>
+  <div class="s-sub" style="margin:0 auto;">ÐÐ¸ÑÐ¸ÑÐµ Ð² Instagram Ð¸Ð»Ð¸ WhatsApp â Ð¾ÑÐ²ÐµÑÐ¸Ð¼ Ð±ÑÑÑÑÐ¾ Ð¸ Ð¿Ð¾Ð¼Ð¾Ð¶ÐµÐ¼ Ñ Ð²ÑÐ±Ð¾ÑÐ¾Ð¼!</div>
+  <div class="contact-grid">
+    <div class="cc reveal">
+      <div class="cc-icon">ð¸</div>
+      <h4>Instagram</h4>
+      <a href="https://www.instagram.com/slavik____alina_" target="_blank">@slavik____alina_</a>
+    </div>
+    <div class="cc reveal">
+      <div class="cc-icon">ð</div>
+      <h4>Ð¢ÐµÐ»ÐµÑÐ¾Ð½</h4>
+      <a href="tel:+77770000000">+7 (777) 000-00-00</a>
+    </div>
+    <div class="cc reveal">
+      <div class="cc-icon">ð</div>
+      <h4>ÐÐ¾ÑÐ¾Ð´</h4>
+      <a href="#">Ð¨ÑÐ¼ÐºÐµÐ½Ñ, ÐÐ°Ð·Ð°ÑÑÑÐ°Ð½</a>
+    </div>
+    <div class="cc reveal">
+      <div class="cc-icon">ð</div>
+      <h4>Ð Ð°Ð±Ð¾ÑÐ°ÐµÐ¼</h4>
+      <a href="#">ÐÐ¶ÐµÐ´Ð½. 10:00 â 23:00</a>
+    </div>
+  </div>
+  <a class="wa-btn" href="https://wa.me/77770000000?text=ÐÑÐ¸Ð²ÐµÑ! Ð¥Ð¾ÑÑ Ð·Ð°ÐºÐ°Ð·Ð°ÑÑ Ð¿Ð¸Ð²Ð¾ Ð¸Ð· Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð° ÐÐ»Ð¸Ð½Ð°" target="_blank">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    ÐÐ°Ð¿Ð¸ÑÐ°ÑÑ Ð² WhatsApp
+  </a>
+</section>
+
+<!-- ââââ FOOTER ââââ -->
+<footer>
+  <div>Â© 2026 <strong style="color:var(--yellow)">ÐÐ°Ð³Ð°Ð·Ð¸Ð½ Â«ÐÐÐÐÐÂ»</strong> â Ð Ð°Ð·Ð»Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¸Ð²Ð¾ Â· Ð¨ÑÐ¼ÐºÐµÐ½Ñ</div>
+  <div>
+    <a href="https://www.instagram.com/slavik____alina_" target="_blank">Instagram</a>
+    &nbsp;Â·&nbsp;
+    <a href="#order">ÐÐ°ÐºÐ°Ð·Ð°ÑÑ Ð´Ð¾ÑÑÐ°Ð²ÐºÑ</a>
+    &nbsp;Â·&nbsp;
+    <a href="#menu">ÐÐµÐ½Ñ</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Tab filter
+  function filterMenu(cat, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.menu-card').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // Add item to order
+  function addItem(name) {
+    const ta = document.getElementById('fi');
+    ta.value = ta.value ? ta.value + '\nâ¢ ' + name : 'â¢ ' + name;
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+    showToast('ðº ' + name + ' â Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¾!');
+  }
+
+  // Submit
+  function submitOrder() {
+    const n = document.getElementById('fn').value.trim();
+    const p = document.getElementById('fp').value.trim();
+    const a = document.getElementById('fa').value.trim();
+    const i = document.getElementById('fi').value.trim();
+    if (!n || !p || !a || !i) { showToast('â ï¸ ÐÐ°Ð¿Ð¾Ð»Ð½Ð¸ÑÐµ Ð²ÑÐµ Ð¿Ð¾Ð»Ñ!', '#c0392b'); return; }
+    const pay = document.getElementById('fpa');
+    const time = document.getElementById('ft');
+    const msg = encodeURIComponent(
+      `ÐÐ°ÐºÐ°Ð· Ð¸Ð· Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð° ÐÐÐÐÐ ðº\n\nÐÐ¼Ñ: ${n}\nÐ¢ÐµÐ»ÐµÑÐ¾Ð½: ${p}\nÐÐ´ÑÐµÑ: ${a}\n\nÐÐ°ÐºÐ°Ð·:\n${i}\n\nÐÐ¿Ð»Ð°ÑÐ°: ${pay.options[pay.selectedIndex].text}\nÐÑÐµÐ¼Ñ: ${time.options[time.selectedIndex].text}`
+    );
+    showToast('ð ÐÐµÑÐµÑÐ¾Ð´Ð¸Ð¼ Ð² WhatsApp...');
+    setTimeout(() => window.open(`https://wa.me/77770000000?text=${msg}`, '_blank'), 800);
+  }
+
+  function showToast(msg, bg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = bg || 'var(--yellow)';
+    t.style.color = bg ? 'white' : 'var(--black)';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>
